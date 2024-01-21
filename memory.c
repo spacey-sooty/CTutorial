@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "Types.h"
@@ -22,4 +23,9 @@ int main(int argc, char** argv) {
     // this data is most likely garbage
     printf("foopointer->state == %d\n", foopointer->state);
     printf("foopointer->len  == %d\n", foopointer->len);
+
+    // here we read from the address 0x00 and cast it to a uint8_t
+    // this is useful when reading and writing to IO ports
+    volatile uint8_t readvalue = (uint8_t)0x00;
+    printf("readvalue == %d\n", readvalue);
 }
